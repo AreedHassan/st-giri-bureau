@@ -14,9 +14,6 @@ export default function SetPasswordPage() {
   const [sessionReady, setSessionReady] = useState(false);
 
   useEffect(() => {
-    // Invite links carry the session as a URL hash fragment
-    // (#access_token=...&refresh_token=...). We must explicitly set
-    // that as the active session before updateUser() will work.
     async function establishSession() {
       const hash = window.location.hash;
       if (hash) {
@@ -40,7 +37,6 @@ export default function SetPasswordPage() {
         }
       }
 
-      // No hash tokens found, check if a session already exists
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -129,4 +125,4 @@ export default function SetPasswordPage() {
       </form>
     </div>
   );
-}
+            }
